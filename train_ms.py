@@ -181,7 +181,8 @@ def run():
         train_dataset,
         # num_workers=min(config.train_ms_config.num_workers, os.cpu_count() - 1),
         # Slow and often freezes, so use only half of the cores.
-        num_workers=min(config.train_ms_config.num_workers, os.cpu_count() // 2),
+        #num_workers=min(config.train_ms_config.num_workers, os.cpu_count() // 2),
+        num_workers=1,
         shuffle=False,
         pin_memory=True,
         collate_fn=collate_fn,
