@@ -16,6 +16,8 @@ from common.constants import DEFAULT_STYLE
 from common.log import logger
 from config import config
 
+
+
 # Get path settings
 with open(os.path.join("configs", "paths.yml"), "r", encoding="utf-8") as f:
     path_config: dict[str, str] = yaml.safe_load(f.read())
@@ -321,7 +323,7 @@ UMAPの場合はepsは0.3くらい、t-SNEの場合は2.5くらいがいいか�
 https://ja.wikipedia.org/wiki/DBSCAN
 """
 
-with gr.Blocks(theme="NoCrypt/miku") as app:
+with gr.Blocks() as app:
     gr.Markdown(initial_md)
     with gr.Row():
         model_name = gr.Textbox(placeholder="your_model_name", label="モデル名")

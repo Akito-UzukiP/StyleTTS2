@@ -149,7 +149,8 @@ class TextAudioSpeakerLoader(torch.utils.data.Dataset):
                 )
             spec = torch.squeeze(spec, 0)
             if config.train_ms_config.spec_cache:
-                torch.save(spec, spec_filename)
+                pass
+                #torch.save(spec, spec_filename)
         return spec, audio_norm
 
     def get_text(self, text, word2ph, phone, tone, language_str, wav_path):

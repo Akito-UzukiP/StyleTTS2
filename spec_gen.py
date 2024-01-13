@@ -77,11 +77,16 @@ processor = AudioProcessor(
     mel_fmax="null",
 )
 
-with open("filelists/train.list", "r") as f:
-    filepaths = [line.split("|")[0] for line in f]  # 取每一行的第一部分作为audiopath
+def preprocess():
+    with open("Data\midnightgirls\esd.list.cleaned", "r",encoding="utf-8") as f:
+        filepaths = [line.split("|")[0] for line in f]  # 取每一行的第一部分作为audiopath
 
-# 使用多进程处理
-with Pool(processes=32) as pool:  # 使用4个进程
-    with tqdm(total=len(filepaths)) as pbar:
-        for i, _ in enumerate(pool.imap_unordered(processor.process_audio, filepaths)):
-            pbar.update()
+    # 使用多进程处理
+    with Pool(processes=16) as pool:  # 使用4个进程
+        with tqdm(total=len(filepaths)) as pbar:
+            for i, _ in enumerate(pool.imap_unordered(processor.process_audio, filepaths)):
+                pbar.update()
+
+
+if __name__ == "__main__":
+    preprocess()

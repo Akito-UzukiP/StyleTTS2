@@ -308,7 +308,7 @@ english_teacher.wav|Mary|EN|How are you? I'm fine, thank you, and you?
 """
 
 if __name__ == "__main__":
-    with gr.Blocks(theme="NoCrypt/miku") as app:
+    with gr.Blocks() as app:
         gr.Markdown(initial_md)
         with gr.Accordion(label="データの前準備", open=False):
             gr.Markdown(prepare_md)

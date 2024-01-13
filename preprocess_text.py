@@ -74,7 +74,7 @@ def preprocess(
                             logger.error(
                                 f"An error occurred while generating the training set and validation set, at line:\n{line}\nDetails:\n{e}"
                             )
-                            raise
+                            continue
 
     transcription_path = cleaned_path
     spk_utt_map = defaultdict(list)

@@ -255,7 +255,7 @@ if len(model_names) == 0:
 initial_id = 0
 initial_model_files = model_holder.model_files_dict[model_names[initial_id]]
 
-with gr.Blocks(theme="NoCrypt/miku") as app:
+with gr.Blocks() as app:
     gr.Markdown(initial_md)
     with gr.Accordion(label="使い方", open=False):
         gr.Markdown(initial_md)

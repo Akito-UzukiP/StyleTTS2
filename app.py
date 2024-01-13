@@ -8,7 +8,9 @@ from typing import Optional
 import gradio as gr
 import torch
 import yaml
-
+import os
+os.environ["HTTP_PROXY"] = "http://localhost:11796"
+os.environ["HTTPS_PROXY"] = "http://localhost:11796"
 from common.constants import (
     DEFAULT_ASSIST_TEXT_WEIGHT,
     DEFAULT_LENGTH,
@@ -245,7 +247,7 @@ if __name__ == "__main__":
         "--share", action="store_true", help="Share this app publicly", default=False
     )
     parser.add_argument(
-        "--server-name",
+        "--server_name",
         type=str,
         default=None,
         help="Server name for Gradio app",
@@ -273,7 +275,7 @@ if __name__ == "__main__":
     initial_id = 0
     initial_pth_files = model_holder.model_files_dict[model_names[initial_id]]
 
-    with gr.Blocks(theme="NoCrypt/miku") as app:
+    with gr.Blocks() as app:
         gr.Markdown(initial_md)
         with gr.Accordion(label="使い方", open=False):
             gr.Markdown(how_to_md)
@@ -448,5 +450,5 @@ if __name__ == "__main__":
         )
 
     app.launch(
-        inbrowser=not args.no_autolaunch, share=args.share, server_name=args.server_name
+        inbrowser=not args.no_autolaunch, share=args.share, server_name=args.server_name, 
     )
